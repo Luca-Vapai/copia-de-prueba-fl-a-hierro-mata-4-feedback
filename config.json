@@ -1,0 +1,16 @@
+{
+  "id": "copia_de_prueba_fl_a_hierro_mata_4",
+  "name": "Copia de Prueba FL - A hierro mata 4",
+  "google_apps_script_endpoint": "https://script.google.com/macros/s/AKfycbyzjOXB1XYcKP86O4C8hfToLDhWT6hkl0LUiV4TQhcpghWchSxg-kIoawIf7NlgUnpYoA/exec",
+  "branding": {
+    "primary_color": "#000000",
+    "logo": ""
+  },
+  "pieces": [
+    {
+      "id": "main",
+      "name": "Main",
+      "versions": []
+    }
+  ]
+}

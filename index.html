@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copia de Prueba FL - A hierro mata 4 · Reviews</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-project">
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-logo-text">Copia de Prueba FL - A hierro mata 4</span>
+      <span class="brand-tagline">Reviews</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Copia de Prueba FL - A hierro mata 4</h1>
+    <p class="subtitle">Select a piece to review. Each piece may have multiple versions; pick the latest one unless otherwise instructed.</p>
+
+    <div id="pieces-list" class="pieces-list">
+      <p class="loading">Loading pieces…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Copia de Prueba FL - A hierro mata 4 · feedback-loop</p>
+  </footer>
+
+  <script src="assets/js/config-loader.js"></script>
+  <script>
+    async function renderProject() {
+      try {
+        const config = await loadConfig();
+        document.title = `${config.name} · Reviews`;
+
+        const piecesContainer = document.getElementById('pieces-list');
+        if (!config.pieces || config.pieces.length === 0) {
+          piecesContainer.innerHTML = '<p class="empty">No pieces published yet. Check back soon.</p>';
+          return;
+        }
+        const cards = config.pieces.map(piece => {
+          const versions = (piece.versions || []).slice().sort((a, b) => b.version - a.version);
+          if (!versions.length) {
+            return `<div class="piece-card"><h2>${piece.name}</h2><p class="empty">No versions yet.</p></div>`;
+          }
+          const versionLinks = versions.map(v => {
+            const isLatest = v === versions[0];
+            return `
+              <a class="version-link${isLatest ? ' latest' : ''}"
+                 href="piece.html?piece=${piece.id}&v=${v.version}">
+                v${v.version}${isLatest ? ' (latest)' : ''} · ${v.export_date || ''}
+              </a>
+            `;
+          }).join('');
+
+          return `
+            <div class="piece-card">
+              <h2>${piece.name}</h2>
+              <div class="version-links">${versionLinks}</div>
+            </div>
+          `;
+        }).join('');
+
+        piecesContainer.innerHTML = cards;
+      } catch (err) {
+        console.error(err);
+        document.getElementById('pieces-list').innerHTML =
+          `<p class="empty">Failed to load pieces: ${err.message}</p>`;
+      }
+    }
+
+    renderProject();
+  </script>
+</body>
+</html>
