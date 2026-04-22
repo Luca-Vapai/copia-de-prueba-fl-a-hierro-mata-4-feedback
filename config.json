@@ -17,6 +17,13 @@
           "youtube_id": "ILhotHY2f7Q",
           "duration_seconds": 48.04,
           "transcript_file": "transcripts/main-v1.json"
+        },
+        {
+          "version": 2,
+          "export_date": "2026-04-22 12:34",
+          "youtube_id": "B0bgaiY2QZo",
+          "duration_seconds": 48.04,
+          "transcript_file": "transcripts/main-v2.json"
         }
       ]
     }
