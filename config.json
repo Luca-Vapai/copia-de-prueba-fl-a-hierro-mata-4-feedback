@@ -10,7 +10,15 @@
     {
       "id": "main",
       "name": "Main",
-      "versions": []
+      "versions": [
+        {
+          "version": 1,
+          "export_date": "2026-04-22 12:33",
+          "youtube_id": "ILhotHY2f7Q",
+          "duration_seconds": 48.04,
+          "transcript_file": "transcripts/main-v1.json"
+        }
+      ]
     }
   ]
 }
